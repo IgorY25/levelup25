@@ -20,7 +20,7 @@ public class ExceptRunner {
                     , genRandom(typeA, AutoParam.height)
                     , genRandom(typeA, AutoParam.length)
             );
-            System.out.println(i+" Тип автомобиля: %s Номер: %d Скорость(км/ч): %d Вес(т): %f Габариты: Ширина(м) %f Высота(м) %f Длина(м) %f".formatted(
+            System.out.println(i + " Тип автомобиля: %s Номер: %d Скорость(км/ч): %d Вес(т): %f Габариты: Ширина(м) %f Высота(м) %f Длина(м) %f".formatted(
                     list[i].getType()
                     , list[i].getNumber()
                     , list[i].getSpeed()
@@ -47,14 +47,11 @@ public class ExceptRunner {
                 if (list[i].getWeight() > 8000 | list[i].getHeight() > 400 | list[i].getWidth() > 250) {
                     throw new Exception();
                 }
-            }
-            catch (ExceptionSpeedLimit100 e){
+            } catch (ExceptionSpeedLimit100 e) {
                 System.out.println("Превышещие скорости 100 км/ч, номер автомобиля: " + list[i].getNumber() + " Вызываем полицию");
-            }
-            catch (ExceptionSpeedLimit e){
+            } catch (ExceptionSpeedLimit e) {
                 System.out.println("2.Превышещие допустимой скорости 80 км/ч");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Проезд через  КПП запрещен! (автомобиль не проходит по весу или габаритам) Номер автомобиля: " + list[i].getNumber() + " Тип " + list[i].getType());
             }
         }
