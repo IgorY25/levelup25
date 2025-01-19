@@ -3,20 +3,20 @@ package less7;
 public class Automobile {
     private AutoType type;
     private int number;
-    private int speed;
-    private int weight;
-    private int width;
-    private int height;
-    private int length;
+    private int speed;//км/ч
+    private int weight;//кг
+    private int width;//см
+    private int height;//см
+    private int length;//см
 
     public Automobile(AutoType type, int number, int speed, int weight, int width, int height, int length) {
         this.type = type;
         this.number = number;
-        this.speed = speed;//км/ч
-        this.weight = weight;//кг
-        this.width = width;//см
-        this.height = height;//см
-        this.length = length;//см
+        this.speed = speed;
+        this.weight = weight;
+        this.width = width;
+        this.height = height;
+        this.length = length;
     }
 
     public AutoType getType() {
