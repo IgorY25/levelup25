@@ -16,7 +16,7 @@ public class ExceptRunner {
                     , genRandom(typeA, AutoParam.HEIGHT)
                     , genRandom(typeA, AutoParam.LENGTH)
             );
-            System.out.println(i + " Тип автомобиля: %s Номер: %d Скорость(км/ч): %d Вес(т): %f Габариты: Ширина(м) %f Высота(м) %f Длина(м) %f".formatted(
+            System.out.println(i + " Тип  автомобиля: %s Номер: %d Скорость(км/ч): %d Вес(т): %f Габариты: Ширина(м) %f Высота(м) %f Длина(м) %f".formatted(
                     list[i].getType()
                     , list[i].getNumber()
                     , list[i].getSpeed()
