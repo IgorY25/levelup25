@@ -7,20 +7,16 @@ public class ExceptRunner {
         Automobile list[] = new Automobile[20];
         AutoType typeA;
         for (int i = 0; i < 20; i++) {
-            if (i < 10) {
-                typeA = AutoType.CAR;
-            } else {
-                typeA = AutoType.TRUCK;
-            }
+            typeA = (i < 10 ? AutoType.CAR : AutoType.TRUCK);
             list[i] = new Automobile(typeA
-                    , genRandom(typeA, AutoParam.number)
-                    , genRandom(typeA, AutoParam.speed)
-                    , genRandom(typeA, AutoParam.weight)
-                    , genRandom(typeA, AutoParam.width)
-                    , genRandom(typeA, AutoParam.height)
-                    , genRandom(typeA, AutoParam.length)
+                    , genRandom(typeA, AutoParam.NUMBER)
+                    , genRandom(typeA, AutoParam.SPEED)
+                    , genRandom(typeA, AutoParam.WEIGHT)
+                    , genRandom(typeA, AutoParam.WIDTH)
+                    , genRandom(typeA, AutoParam.HEIGHT)
+                    , genRandom(typeA, AutoParam.LENGTH)
             );
-            System.out.println(i + " Тип автомобиля: %s Номер: %d Скорость(км/ч): %d Вес(т): %f Габариты: Ширина(м) %f Высота(м) %f Длина(м) %f".formatted(
+            System.out.println(i + " Тип  автомобиля: %s Номер: %d Скорость(км/ч): %d Вес(т): %f Габариты: Ширина(м) %f Высота(м) %f Длина(м) %f".formatted(
                     list[i].getType()
                     , list[i].getNumber()
                     , list[i].getSpeed()
@@ -64,70 +60,82 @@ public class ExceptRunner {
         switch (type) {
             case CAR:
                 switch (parametr) {
-                    case number:
+                    case NUMBER: {
                         max = 999;
                         min = 100;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case speed:
+                    }
+                    case SPEED: {
                         max = 160;
                         min = 40;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case weight:
+                    }
+                    case WEIGHT: {
                         max = 700;
                         min = 300;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case width:
+                    }
+                    case WIDTH: {
                         max = 200;
                         min = 160;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case height:
+                    }
+                    case HEIGHT: {
                         max = 200;
                         min = 120;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case length:
+                    }
+                    case LENGTH: {
                         max = 450;
                         min = 200;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
+                    }
                 }
                 break;
             case TRUCK:
                 switch (parametr) {
-                    case number:
+                    case NUMBER: {
                         max = 999;
                         min = 100;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case speed:
+                    }
+                    case SPEED: {
                         max = 120;
                         min = 20;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case weight:
+                    }
+                    case WEIGHT: {
                         max = 50000;
                         min = 3000;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case width:
+                    }
+                    case WIDTH: {
                         max = 300;
                         min = 200;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case height:
+                    }
+                    case HEIGHT: {
                         max = 500;
                         min = 200;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
-                    case length:
+                    }
+                    case LENGTH: {
                         max = 800;
                         min = 200;
                         ret = rand.nextInt(max - min + 1) + min;
                         break;
+                    }
                 }
                 break;
         }
