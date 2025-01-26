@@ -11,7 +11,7 @@ public class CollRun {
             gemp = new GenerEmployee(i);
             employList.add(new Employee(gemp.getFio(), gemp.getTabn(), gemp.getWorkAge()));
         }
-        System.out.println("ArrayList*********************");
+        System.out.println("ArrayList *********************");
         System.out.println("Количество элементов ArrayList: " + employList.size());
         ListIterator<Employee> integerListIterator = employList.listIterator();
 
@@ -23,7 +23,7 @@ public class CollRun {
         System.out.println("=============");
         EmployeeUtils.printRemove(employList);
 
-        System.out.println("LinkedList*********************");
+        System.out.println("LinkedList *********************");
         LinkedList<Employee> employLinkedList = new LinkedList<>();
         for (int i = 0; i < countEl; i++) {
             gemp = new GenerEmployee(i);
@@ -39,7 +39,7 @@ public class CollRun {
         System.out.println("=============");
         EmployeeUtils.printRemove(employLinkedList);
 
-        System.out.println("TreeSet*********************");
+        System.out.println("TreeSet *********************");
         Set<Employee> employTreeSet = new TreeSet<>(new Comparator<Employee>() {
             @Override
             public int compare(Employee o1, Employee o2) {
