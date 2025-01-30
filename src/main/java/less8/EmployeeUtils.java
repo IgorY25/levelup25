@@ -12,11 +12,9 @@ public class EmployeeUtils {
         while (iterUtils.hasNext()) {
             temp = iterUtils.next();
             if (temp.getWorkAge() > workAge) {
-                System.out.println(temp.toString());
+                System.out.println(temp);
             }
-
         }
-
     }
 
     public static void printRemove(Collection<Employee> parameterList) {

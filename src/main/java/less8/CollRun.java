@@ -2,6 +2,7 @@ package less8;
 
 import java.util.*;
 
+
 public class CollRun {
     public static void main(String[] args) {
         int countEl = 20, wage = 21;
@@ -16,7 +17,7 @@ public class CollRun {
         ListIterator<Employee> integerListIterator = employList.listIterator();
 
         while (integerListIterator.hasNext()) {
-            System.out.println(integerListIterator.next().toString());
+            System.out.println(integerListIterator.next());
         }
         System.out.println("-------------");
         EmployeeUtils.printEmployee(employList, wage);
