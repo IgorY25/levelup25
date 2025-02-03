@@ -2,7 +2,7 @@ package less9;
 
 public enum Provider {
     МЕГАФОН,
-    БИЛАЙН,
+    BEELINE,
     МТС,
     ТЕЛЕ2,
     РОСТЕЛЕКОМ

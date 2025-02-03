@@ -7,7 +7,7 @@ public class GenerBook {
     private String fio;
     private String phone;
     private Provider operator;
-    private boolean sity;
+    private boolean city;
 
     public String getFio() {
         return fio;
@@ -21,8 +21,8 @@ public class GenerBook {
         return operator;
     }
 
-    public boolean isSity() {
-        return sity;
+    public boolean isСity() {
+        return city;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class GenerBook {
                 "fio='" + fio + '\'' +
                 ", phone='" + phone + '\'' +
                 ", operator=" + operator +
-                ", sity=" + sity +
+                ", sity=" + city +
                 '}';
     }
 
@@ -57,24 +57,24 @@ public class GenerBook {
         operNom = Integer.toString(index).charAt(9);
         switch (operNom) {
             case '0':
-                this.operator = Provider.БИЛАЙН;
-                this.sity = false;
+                this.operator = Provider.BEELINE;
+                this.city = false;
                 break;
             case '2':
                 this.operator = Provider.МЕГАФОН;
-                this.sity = false;
+                this.city = false;
                 break;
             case '4':
                 this.operator = Provider.МТС;
-                this.sity = false;
+                this.city = false;
                 break;
             case '6':
                 this.operator = Provider.ТЕЛЕ2;
-                this.sity = false;
+                this.city = false;
                 break;
             case '8':
                 this.operator = Provider.РОСТЕЛЕКОМ;
-                this.sity = true;
+                this.city = true;
         }
     }
 }
