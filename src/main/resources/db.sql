@@ -1,170 +1,170 @@
-create table typeСlient
+create table type_client
 (
     id   serial primary key,
-    external Boolean NOT NULL,
-    name varchar(128) NOT NULL
+    external boolean not null,
+    name varchar(128) not null
 );
-alter table public."typeСlient"
-    add constraint "typeСlient_pk"
+alter table type_client
+    add constraint type_client_pk
         unique (name);
 
 create table clients
 (
     id    serial primary key,
-    typeСlientRef int REFERENCES typeСlient(id),
+    type_client_ref int references type_client(id),
     name  varchar(128)
 );
-alter table public.clients
+alter table clients
     add constraint clients_pk
         unique (name);
 
-create table measureUnit
+create table measure_unit
 (
     id   serial primary key,
-    name varchar(25) NOT NULL
+    name varchar(25) not null
 );
-alter table public.measureUnit
-    add constraint measureUnit_pk
+alter table measure_unit
+    add constraint measure_unit_pk
         unique (name);
 
 create table product
 (
     id      serial primary key,
-    unitRef int,
+    unit_ref int,
     name    varchar(256)
 );
 create unique index product_pk
-    on public.product (name, unitref);
+    on product (name, unit_ref);
 
-alter table public.product
-    add foreign key (unitref) references public.measureUnit;
+alter table product
+    add foreign key (unit_ref) references measure_unit;
 
 create table documents --документы на приход/расход товара
 (
     id          serial primary key,
     date        Date,
     numDoc      varchar(21),
-    clientDebet int REFERENCES clients(id),
-    clientKredit int REFERENCES clients(id),
-    productRef  int REFERENCES product(id),
+    clientDebet int references clients(id),
+    clientKredit int references clients(id),
+    product_ref  int references product(id),
     price       decimal(2),
     quantity    decimal(3)
 );
 create index documents_date_index
-    on public.documents (date);
+    on documents (date);
 
 create table balance --сальдо по подразделениям
 (
     id          serial primary key,
     date        date,
-    clientRef   int REFERENCES clients(id),
-    productRef  int REFERENCES product(id),
+    client_ref   int references clients(id),
+    product_ref  int references product(id),
     price       decimal(2),
     quantity    decimal(3)
 );
 
-alter table public.balance
+alter table balance
     add constraint balance_pk_2
-        unique (date, clientref, productref, price);
-create index balance_clientref_index
-    on public.balance (clientref);
-create index balance_productref_index
-    on public.balance (productref);
+        unique (date, client_ref, product_ref, price);
+create index balance_client_ref_index
+    on balance (client_ref);
+create index balance_product_ref_index
+    on balance (product_ref);
 
-create table priceList --прайслист
+create table price_list --прайслист
 (
     id          serial primary key,
-    date        Date,
-    productRef  int REFERENCES product(id),
+    date        date,
+    product_ref  int references product(id),
     price       decimal(2)
 );
 
-alter table public.pricelist
-    add constraint pricelist_pk
-        unique (date, productref, price);
+alter table price_list
+    add constraint price_list_pk
+        unique (date, product_ref, price);
 
-create table operDay --опердень
+create table oper_day --опердень
 (
     id          serial primary key,
-    date        Date
+    date        date
 );
-alter table public.operday
-    add constraint operday_pk
+alter table oper_day
+    add constraint oper_day_pk
         unique (date);
 
-insert into typeСlient(external, name)
+insert into type_client(external, name)
 values (true,'АО')
-    insert into typeСlient(external, name)
+    insert into type_client(external, name)
 values (true,'ТОО')
-insert into typeСlient(external, name)
+insert into type_client(external, name)
 values (true,'ОАО')
-insert into typeСlient(external, name)
+insert into type_client(external, name)
 values (false,'склад');
-insert into typeСlient(external, name)
+insert into type_client(external, name)
 values (false,'магазин');
 
-insert into clients(typeСlientRef, name)
+insert into clients(type_client_ref, name)
 values (4,'Головной');
-insert into clients(typeСlientRef, name)
+insert into clients(type_client_ref, name)
 values (5,'Центральный');
-insert into clients(typeСlientRef, name)
+insert into clients(type_client_ref, name)
 values (5,'На Художников');
-insert into clients(typeСlientRef, name)
+insert into clients(type_client_ref, name)
 values (5,'На Энгельса');
-insert into clients(typeСlientRef, name)
+insert into clients(type_client_ref, name)
 values (5,'На Невском');
 
-insert into clients (typeСlientRef, name)
+insert into clients (type_client_ref, name)
 values (1,'Перекресток (мы)')
-    insert into clients (typeСlientRef, name)
+    insert into clients (type_client_ref, name)
 values (2,'Молочный комбинат Ермолино');
-insert into clients (typeСlientRef, name)
+insert into clients (type_client_ref, name)
 values (3,'Молочный комбинат Пискаревский');
-insert into clients (typeСlientRef, name)
+insert into clients (type_client_ref, name)
 values (2,'Дикий фермер');
-insert into clients (typeСlientRef, name)
+insert into clients (type_client_ref, name)
 values (3,'Хлебный комбинат Урожайный');
 
-insert into measureUnit(name)
+insert into measure_unit(name)
 values ('штук');
-insert into measureUnit(name)
+insert into measure_unit(name)
 values ('кг');
-insert into measureUnit(name)
+insert into measure_unit(name)
 values ('литров');
-insert into measureUnit(name)
+insert into measure_unit(name)
 values ('пачек');
 
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('печенье', 4);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('колбаса сервелат', 2);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('сосиски', 2);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('сардельки', 2);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('молоко пискаревсое 0.9', 1);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('пиво Жигулевское', 3);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('пиво Клинское', 3);
-insert into product(name, unitRef)
+insert into product(name, unit_ref)
 values ('кефир 0,5', 1);
 
-select * from typeСlient --форма собственности внешних клиентов
+select * from type_client --форма собственности внешних клиентов
 where external;
 
-select * from typeСlient -- виды подразделений предприятия АО "Перекресток"
+select * from type_client -- виды подразделений предприятия АО "Перекресток"
 where not external;
 
 select tС.name,cl.name from clients cl --клиенты
-                                inner join typeСlient tС on tС.id = cl.typeСlientRef and tС.external;
+                                inner join type_client tС on tС.id = cl.type_client_ref and tС.external;
 
 select tС.name,cl.name from clients cl --подразделения
-                                inner join typeСlient tС on tС.id = cl.typeСlientRef and not tС.external;
+                                inner join type_client tС on tС.id = cl.type_client_ref and not tС.external;
 
-select * from measureUnit; --единицы измерений
+select * from measure_unit; --единицы измерений
 
 select p.name, u.name --товар
 from product p
-         inner join measureUnit u on p.unitRef = u.id;
+         inner join measure_unit u on p.unit_ref = u.id;

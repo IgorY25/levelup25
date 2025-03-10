@@ -1,18 +1,23 @@
 package less10;
 
+import lombok.Getter;
+
 public class IntHolder {
     private Long value;
     private int counter = 0;
+    @Getter
     private Long min;
+    @Getter
     private Long max;
+    @Getter
     private Long uneven;
 
     public IntHolder() {
 
-        this.value = new Long(0);
-        this.min = new Long(0);
-        this.max = new Long(0);
-        this.uneven = new Long(0);
+        this.value = 0L;
+        this.min = 0L;
+        this.max = 0L;
+        this.uneven = 0L;
     }
 
     public Long getValue() {
@@ -31,17 +36,5 @@ public class IntHolder {
         if (value % 2 > 0) {
             this.uneven = this.uneven + value;
         }
-    }
-
-    public Long getMin() {
-        return min;
-    }
-
-    public Long getMax() {
-        return max;
-    }
-
-    public Long getUneven() {
-        return uneven;
     }
 }

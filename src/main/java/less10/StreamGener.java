@@ -3,6 +3,7 @@ package less10;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,28 +19,28 @@ public class StreamGener {
                 streamSupplier.get()
                         .distinct()
                         .sorted(Comparator.naturalOrder())
-                        .collect(Collectors.toMap(value -> value, value -> {
-                                    Long sum = new Long(0);
+                        .collect(Collectors.toMap(Function.identity(),value -> {
+                                    Long sum = 0L;
                                     System.out.println(value);
                                     intHolder.setValue(value);
                                     while (value > 0) {
-                                        sum = sum + value % 10;
-                                        value = value / 10;
+                                        sum += + value % 10;
+                                        value /= 10;
                                     }
                                     if (sum > 9) {
                                         value = sum;
-                                        sum = new Long(0);
+                                        sum = 0L;
                                         while (value > 0) {
-                                            sum = sum + value % 10;
-                                            value = value / 10;
+                                            sum += + value % 10;
+                                            value /= 10;
                                         }
                                     }
                                     if (sum > 9) {
                                         value = sum;
-                                        sum = new Long(0);
+                                        sum = 0L;
                                         while (value > 0) {
-                                            sum = sum + value % 10;
-                                            value = value / 10;
+                                            sum += value % 10;
+                                            value /= 10;
                                         }
                                     }
                                     return sum;
