@@ -9,17 +9,11 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class ReverseWords {
-    public static void main(String... args) throws Exception {
-        String pathIn = ""; //   src/resources/fileForRead.txt
-        String pathOut = ""; //   src/resources/fileForWrite.txt
-        for (String str : args) {
-            if (pathIn.isEmpty()) {
-                pathIn = str;
-            } else {
-                pathOut = str;
-                break;
-            }
-        }
+    public static void main(String[] args) throws Exception {
+        String pathIn = args[0];
+        String pathOut = args[1];
+        System.out.println(pathIn);
+        System.out.println(pathOut);
         String revers = "";
         try (BufferedReader fileReader = new BufferedReader(new FileReader(pathIn, StandardCharsets.UTF_8), 1024);
              BufferedReader fileReader1 = new BufferedReader(new FileReader(pathIn, StandardCharsets.UTF_8), 1024)
@@ -34,11 +28,9 @@ public class ReverseWords {
             System.out.println("На выходе:");
             System.out.println(revers);
         }
-        if (!pathOut.isEmpty()) {
+        try (FileWriter fileWriter = new FileWriter(pathOut)) {
             System.out.println("Запись: " + revers);
-            FileWriter fileWriter = new FileWriter(pathOut);
             fileWriter.write(revers);
-            fileWriter.close();
         }
     }
 }
