@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class AddClient {
+public class ClientService {
     public static void addClient() throws Exception {
         System.out.println("");
         String sqlSelectType = """

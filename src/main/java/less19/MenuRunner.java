@@ -1,9 +1,26 @@
 package less19;
 
+import lombok.SneakyThrows;
+
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
+
 public class MenuRunner {
-    public static void main(String[] args) {
+    public static final Properties DB_PROPERTIES = new Properties();
+
+    static {
+        loadDbProperties();
+    }
+
+    @SneakyThrows(IOException.class)
+    private static void loadDbProperties() {
+        DB_PROPERTIES.load(MenuRunner.class.getResourceAsStream("/db/db.properties"));
+    }
+
+    public static void main(String[] args) throws Exception {
+        Class.forName("org.postgresql.Driver");
         Scanner scanner = new Scanner(System.in);
         int menu = 0;
         do {
@@ -23,8 +40,8 @@ public class MenuRunner {
                     switch (menu) {
                         case 1: {
                             System.out.println("case 1");
-                            AddClient addClient = new AddClient();
-                            addClient.addClient();
+                            ClientService clientService = new ClientService();
+                            clientService.addClient();
                             menu = 0;
                             break;
                         }
