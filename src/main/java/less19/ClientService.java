@@ -58,19 +58,7 @@ public class ClientService {
                         System.out.println("Вы ввели число %d".formatted(menu));
                         switch (menu) {
                             case 1: {
-                                statement = connection.prepareStatement(sqlSelect);
-                                resultSet = statement.executeQuery();
-                                System.out.println("");
-                                System.out.println("Вывод существующих поставщиков");
-                                while (resultSet.next()) {
-                                    int number = resultSet.getInt("number");
-                                    String type = resultSet.getString("type");
-                                    String name = resultSet.getString("name");
-                                    System.out.println("id=" + number + ",Вид организации='" + type + '\'' +
-                                            ",Наименование='" + name + '\'');
-                                }
-                                System.out.println("Конец вывода существующих поставщиков");
-                                System.out.println("");
+                                ViewingClients.viewSeller(connection, true);
                                 menu = 0;
                                 break;
                             }
@@ -215,5 +203,4 @@ public class ClientService {
             connection.commit();
         }
     }
-
 }
